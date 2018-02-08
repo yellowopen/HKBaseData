@@ -120,7 +120,7 @@ static NSString *const CLEAR_ALL_DATA                  = @"DELETE FROM %@";
 #pragma mark - Get Storage Status
 
 - (BOOL)itemExistsForKey:(NSString *)key {
-    return YES;
+    return [self getItemForKey:key] != NULL;
 }
 
 /**
