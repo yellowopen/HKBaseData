@@ -120,7 +120,7 @@ static NSString *const CLEAR_ALL_DATA                  = @"DELETE FROM %@";
 #pragma mark - Get Storage Status
 
 - (BOOL)itemExistsForKey:(NSString *)key {
-    return [self getItemForKey:key] != NULL;
+    return (id)[self getItemForKey:key] != nil;
 }
 
 /**
@@ -144,7 +144,7 @@ static NSString *const CLEAR_ALL_DATA                  = @"DELETE FROM %@";
     if (![fileManager fileExistsAtPath:self.dbPath]) {
         count = 0;
     } else {
-        count = [[fileManager attributesOfItemAtPath:self.dbPath error:nil] fileSize];
+        count = (NSUInteger)[[fileManager attributesOfItemAtPath:self.dbPath error:nil] fileSize];
     }
     return (int)count;
 }
